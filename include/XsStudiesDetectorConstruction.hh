@@ -1,52 +1,65 @@
 //
 // ********************************************************************
 
-#ifndef HadDetectorConstruction_h
-#define HadDetectorConstruction_h 1
+#ifndef XsStudiesDetectorConstruction_h
+#define XsStudiesDetectorConstruction_h 1
 
 #include "G4VUserDetectorConstruction.hh"
 #include "globals.hh"
 #include "G4Material.hh"
 
 class G4LogicalVolume;
-class HadDetectorMessenger;
+class XsStudiesDetectorConstructionMessenger;
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-class HadDetectorConstruction : public G4VUserDetectorConstruction
-{
+class XsStudiesDetectorConstruction : public G4VUserDetectorConstruction {
 public:
 
-  HadDetectorConstruction();
-  virtual ~HadDetectorConstruction();
+    XsStudiesDetectorConstruction();
+    virtual ~XsStudiesDetectorConstruction();
 
 public:
 
-  G4VPhysicalVolume* Construct();
-
-  void SetWorldMaterial(const G4String&);
-  void SetTargetMaterial(const G4String&);
-
-  void SetTargetRadius(G4double val);
-  void SetTargetLength(G4double val);
-
-  void UpdateGeometry();
+    virtual G4VPhysicalVolume* Construct();
+    virtual void ConstructSDandField();
+    void SetWorldMaterial(const G4String&);
+    void SetTargetMaterial(const G4String&);
+    void SetTargetRadius(G4double val);
+    void SetTargetLength(G4double val);
+    void UpdateGeometry();
+    void SetWorldMaterial(G4Material* worldMaterial);
+    G4Material* GetWorldMaterial() const;
+    void SetTargetMaterial(G4Material* targetMaterial);
+    G4Material* GetTargetMaterial() const;
+    G4double GetTargetLength() const;
+    void SetRadius(G4double radius);
+    G4double GetRadius() const;
+    void SetDetectorConstructionMessenger(XsStudiesDetectorConstructionMessenger* detectorMessenger);
+    XsStudiesDetectorConstructionMessenger* GetDetectorConstructionMessenger() const;
+    void SetLogicWorld(G4LogicalVolume* logicWorld);
+    G4LogicalVolume* GetLogicWorld() const;
+    void SetLogicTarget(G4LogicalVolume* logicTarget);
+    G4LogicalVolume* GetLogicTarget() const;
+    void SetDensity(G4double density);
+    G4double GetDensity() const;
 
 private:
 
-  HadDetectorConstruction & operator=(const HadDetectorConstruction &right);
-  HadDetectorConstruction(const HadDetectorConstruction&);
+    XsStudiesDetectorConstruction & operator=(const XsStudiesDetectorConstruction &right);
+    XsStudiesDetectorConstruction(const XsStudiesDetectorConstruction&);
 
-  G4double radius;
-  G4double targetZ;
+    G4double radius;
+    G4double targetLength;
+    G4double density;
 
-  G4Material*  targetMaterial;
-  G4Material*  worldMaterial;
+    G4Material* targetMaterial;
+    G4Material* worldMaterial;
 
-  G4LogicalVolume* logicTarget;
-  G4LogicalVolume* logicWorld;
+    G4LogicalVolume* logicTarget;
+    G4LogicalVolume* logicWorld;
 
-  HadDetectorMessenger* detectorMessenger;
+    XsStudiesDetectorConstructionMessenger* detectorMessenger;
 
 };
 

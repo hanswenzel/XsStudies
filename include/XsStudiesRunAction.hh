@@ -1,28 +1,25 @@
 
-#ifndef HadRunAction_h
-#define HadRunAction_h 1
+#ifndef XsStudiesRunAction_h
+#define XsStudiesRunAction_h 1
 
 #include "G4UserRunAction.hh"
 #include "G4Run.hh"
-#include "globals.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....
+class XsStudiesRun;
 
-class HadRunAction : public G4UserRunAction
-{
+class XsStudiesRunAction : public G4UserRunAction {
 public: // Without description
 
-  HadRunAction();
-  ~HadRunAction();
+    XsStudiesRunAction();
+    virtual ~XsStudiesRunAction();
+    virtual G4Run* GenerateRun();
+    void BeginOfRunAction(const G4Run*);
+    void EndOfRunAction(const G4Run*);
 
-public: // With description
- 
-  void BeginOfRunAction(const G4Run*);
-  // In this method histogramms are booked
-
-  void EndOfRunAction(const G4Run*);
-  // In this method bookHisto method is called in which histogramms are filled
-  int nEvts;
+private:
+    
+      XsStudiesRun*          fRun;
 
 };
 

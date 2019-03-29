@@ -1,28 +1,28 @@
 
-#ifndef HadEventActionMessenger_h
-#define HadEventActionMessenger_h 1
+#ifndef XsStudiesEventActionMessenger_h
+#define XsStudiesEventActionMessenger_h 1
 
 #include "globals.hh"
 #include "G4UImessenger.hh"
 
-class HadEventAction;
+class XsStudiesEventAction;
 class G4UIcmdWithAString;
 class G4UIcmdWithAnInteger;
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-class HadEventActionMessenger: public G4UImessenger
+class XsStudiesEventActionMessenger: public G4UImessenger
 {
 public:
 
-  HadEventActionMessenger(HadEventAction*);
-  virtual ~HadEventActionMessenger();
+  XsStudiesEventActionMessenger(XsStudiesEventAction*);
+  virtual ~XsStudiesEventActionMessenger();
     
   void SetNewValue(G4UIcommand*, G4String);
     
 private:
 
-  HadEventAction*          eventAction;   
+  XsStudiesEventAction*          eventAction;   
   G4UIcmdWithAString*   drawCmd;
   G4UIcmdWithAnInteger* printCmd;    
   G4UIcmdWithAnInteger* dCmd;    

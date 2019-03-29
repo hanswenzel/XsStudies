@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
 
-set(name g4had)
+set(name XsStudies)
 project(${name})
 
 #----------------------------------------------------------------------------
@@ -34,17 +34,9 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/include
 link_directories( ${ROOT_LIBRARY_DIR} )
 
 
-#--ProdTuple_t------------------------------------------------------------------------------------
-ROOT_GENERATE_DICTIONARY( "${CMAKE_CURRENT_SOURCE_DIR}/src/ProdTuple_tDict"
-                          "${CMAKE_CURRENT_SOURCE_DIR}/include/ProdTuple_t.hh"
-                          "${CMAKE_CURRENT_SOURCE_DIR}/include/TrackInfo_t.hh"
-                          LINKDEF  
-                          "${CMAKE_CURRENT_SOURCE_DIR}/include/Linkdef.h")
-#                          OPTIONS -p)
 
 file(GLOB sources ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cc )
 
-list( APPEND sources src/ProdTuple_tDict.cxx )
 
 add_library(CrossSection SHARED  ${sources} )
 

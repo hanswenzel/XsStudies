@@ -1,34 +1,33 @@
-#include "HadEventAction.hh"
+#include "XsStudiesEventAction.hh"
 #include "G4Event.hh"
-#include "HadEventActionMessenger.hh"
-#include "HadAnalysis.hh"
+#include "XsStudiesEventActionMessenger.hh"
 
 #include "G4UImanager.hh"
 #include "G4ios.hh"
 #include "G4Track.hh"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....
 
-HadEventAction::HadEventAction():
+XsStudiesEventAction::XsStudiesEventAction():
   printModulo(100),
   nSelected(0),
   drawFlag("all"),
   debugStarted(false)
 {
-  eventMessenger = new HadEventActionMessenger(this);
+  eventMessenger = new XsStudiesEventActionMessenger(this);
   UI = G4UImanager::GetUIpointer();
   selectedEvents.clear();
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....
 
-HadEventAction::~HadEventAction()
+XsStudiesEventAction::~XsStudiesEventAction()
 {
   delete eventMessenger;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....
 
-void HadEventAction::BeginOfEventAction(const G4Event* evt)
+void XsStudiesEventAction::BeginOfXsStudiesEventAction(const G4Event* evt)
 {
   // New event
   G4int nEvt = evt->GetEventID();
@@ -48,29 +47,8 @@ void HadEventAction::BeginOfEventAction(const G4Event* evt)
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....
 
-void HadEventAction::AddTrack(const G4Track* aTrack,G4int proc)
-{
-  
-  TrackInfo_t aTrackInfo;
-  aTrackInfo.PDGcode = (aTrack->GetDefinition())->GetPDGEncoding();
-  aTrackInfo.massPart= (aTrack->GetDefinition())->GetPDGMass();
-  aTrackInfo.Pos.SetX(aTrack->GetPosition().x());
-  aTrackInfo.Pos.SetY(aTrack->GetPosition().y());
-  aTrackInfo.Pos.SetZ(aTrack->GetPosition().z());
-  aTrackInfo.Mom.SetPx(aTrack->GetMomentum().x());
-  aTrackInfo.Mom.SetPy(aTrack->GetMomentum().y());
-  aTrackInfo.Mom.SetPz(aTrack->GetMomentum().z());
-  aTrackInfo.Mom.SetE(aTrack->GetTotalEnergy());
-  if(proc==1)aTrackInfo.interType = 1; 
-  if(proc==2)aTrackInfo.interType = 2;
-  if(proc!=1 && proc!=2)aTrackInfo.interType = 0;
 
-  TrackInfoVec.push_back(aTrackInfo);
- 
-}
-
-
-void HadEventAction::EndOfEventAction(const G4Event* evt)
+void XsStudiesEventAction::EndOfXsStudiesEventAction(const G4Event* evt)
 {
   
   if(debugStarted) {
@@ -79,9 +57,8 @@ void HadEventAction::EndOfEventAction(const G4Event* evt)
     debugStarted = false;
   }
 
-  HadAnalysis* analysis = HadAnalysis::getInstance();
-  if(TrackInfoVec.size()<100)analysis->FillNtuple(TrackInfoVec);
-  TrackInfoVec.clear();
+  //HadAnalysis* analysis = HadAnalysis::getInstance();
+
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....

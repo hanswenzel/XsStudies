@@ -1,13 +1,13 @@
 
-#include "HadEventActionMessenger.hh"
+#include "XsStudiesEventActionMessenger.hh"
 
-#include "HadEventAction.hh"
+#include "XsStudiesEventAction.hh"
 #include "G4UIcmdWithAString.hh"
 #include "G4UIcmdWithAnInteger.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-HadEventActionMessenger::HadEventActionMessenger(HadEventAction* EvAct)
+XsStudiesEventActionMessenger::XsStudiesEventActionMessenger(XsStudiesEventAction* EvAct)
 :eventAction(EvAct)
 { 
   drawCmd = new G4UIcmdWithAString("/testhadr/DrawTracks", this);
@@ -34,7 +34,7 @@ HadEventActionMessenger::HadEventActionMessenger(HadEventAction* EvAct)
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-HadEventActionMessenger::~HadEventActionMessenger()
+XsStudiesEventActionMessenger::~XsStudiesEventActionMessenger()
 {
   delete drawCmd;
   delete printCmd;   
@@ -43,7 +43,7 @@ HadEventActionMessenger::~HadEventActionMessenger()
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void HadEventActionMessenger::SetNewValue(G4UIcommand* command,
+void XsStudiesEventActionMessenger::SetNewValue(G4UIcommand* command,
                                           G4String newValue)
 { 
   if(command == drawCmd)

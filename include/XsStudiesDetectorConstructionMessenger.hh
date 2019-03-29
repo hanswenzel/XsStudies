@@ -1,11 +1,11 @@
 
-#ifndef HadDetectorMessenger_h
-#define HadDetectorMessenger_h 1
+#ifndef XsStudiesDetectorConstructionMessenger_h
+#define XsStudiesDetectorConstructionMessenger_h 1
 
 #include "globals.hh"
 #include "G4UImessenger.hh"
 
-class HadDetectorConstruction;
+class XsStudiesDetectorConstruction;
 class G4UIdirectory;
 class G4UIcmdWithABool;
 class G4UIcmdWithAString;
@@ -15,18 +15,18 @@ class G4UIcmdWithoutParameter;
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-class HadDetectorMessenger: public G4UImessenger
+class XsStudiesDetectorConstructionMessenger: public G4UImessenger
 {
 public:
 
-  HadDetectorMessenger(HadDetectorConstruction* );
-  virtual ~HadDetectorMessenger();
+  XsStudiesDetectorConstructionMessenger(XsStudiesDetectorConstruction* );
+  virtual ~XsStudiesDetectorConstructionMessenger();
 
   void SetNewValue(G4UIcommand*, G4String);
 
 private:
 
-  HadDetectorConstruction* Detector;
+  XsStudiesDetectorConstruction* Detector;
 
   G4UIdirectory*             testDir;
   G4UIcmdWithAString*        matCmd;

@@ -1,29 +1,27 @@
 
-#ifndef HadPrimaryGeneratorAction_h
-#define HadPrimaryGeneratorAction_h 1
+#ifndef XsStudiesPrimaryGeneratorAction_h
+#define XsStudiesPrimaryGeneratorAction_h 1
 
 #include "G4VUserPrimaryGeneratorAction.hh"
 #include "globals.hh"
 
 class G4ParticleGun;
-
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-class HadPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction {
-public:
-    HadPrimaryGeneratorAction();
-    virtual ~HadPrimaryGeneratorAction();
-
-    void GeneratePrimaries(G4Event*);
-
-    G4ParticleGun* GetParticleGun() {
-        return particleGun;
-    };
+class XsStudiesPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction {
 private:
 
-    HadPrimaryGeneratorAction & operator=(const HadPrimaryGeneratorAction &right);
-    HadPrimaryGeneratorAction(const HadPrimaryGeneratorAction&);
+    XsStudiesPrimaryGeneratorAction & operator=(const XsStudiesPrimaryGeneratorAction &right);
+    XsStudiesPrimaryGeneratorAction(const XsStudiesPrimaryGeneratorAction&);
     G4ParticleGun* particleGun;
+public:
+    XsStudiesPrimaryGeneratorAction();
+    virtual ~XsStudiesPrimaryGeneratorAction();
+    void GeneratePrimaries(G4Event*);
+
+    G4ParticleGun* GetParticleGun() const {
+        return particleGun;
+    }
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

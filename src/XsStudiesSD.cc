@@ -1,42 +1,33 @@
-#include "HadSD.hh"
+#include "XsStudiesSD.hh"
 #include "G4HCofThisEvent.hh"
 #include "G4Step.hh"
 #include "G4VProcess.hh"
-#include "G4ThreeVector.hh"
-#include "G4SDManager.hh"
-#include "G4ios.hh"
-#include "HadAnalysis.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-HadSD::HadSD(const G4String& name,
+XsStudiesSD::XsStudiesSD(const G4String& name,
         const G4String& hitsCollectionName)
-: G4VSensitiveDetector(name) {
+: numberElastic(0),
+numberinElastic(0),
+G4VSensitiveDetector(name) {
 }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-HadSD::~HadSD() {
+XsStudiesSD::~XsStudiesSD() {
 }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-void HadSD::Initialize(G4HCofThisEvent* hce) {
+void XsStudiesSD::Initialize(G4HCofThisEvent* hce) {
 }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-G4bool HadSD::ProcessHits(G4Step* aStep,
+G4bool XsStudiesSD::ProcessHits(G4Step* aStep,
         G4TouchableHistory*) {
     //
     // we only care about the first elastic or inelastic interaction of the primary particle
-    // (geant4 version 4.10 and up) )
+    // we record it and then we kill the track.
     //  
     if (aStep->GetTrack()->GetParentID() == 0) {
-      std::cout<< aStep->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName()<<std::endl;
         if (aStep->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName() == "hadElastic") {
-            HadAnalysis* analysis = HadAnalysis::getInstance();
-            analysis->SetnumberElastic((analysis->GetnumberElastic()) + 1);
+            numberElastic++;
+            aStep->GetTrack()->SetTrackStatus(fStopAndKill);
             return true;
         }
         if ((aStep->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName() == "pi-Inelastic") ||
@@ -45,19 +36,22 @@ G4bool HadSD::ProcessHits(G4Step* aStep,
                 (aStep->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName() == "neutronInelastic") ||
                 (aStep->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName() == "kaon-Inelastic") ||
                 (aStep->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName() == "kaon+Inelastic")) {
-
-            HadAnalysis* analysis = HadAnalysis::getInstance();
-            analysis->SetnumberinElastic((analysis->GetnumberinElastic()) + 1);
+            numberinElastic++;
+            aStep->GetTrack()->SetTrackStatus(fStopAndKill);
             return true;
         }
     }
     return true;
 }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-void HadSD::EndOfEvent(G4HCofThisEvent*) {
-
+void XsStudiesSD::EndOfEvent(G4HCofThisEvent*) {
 }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+unsigned int XsStudiesSD::GetNumberinElastic() const {
+    return numberinElastic;
+}
+
+unsigned int XsStudiesSD::GetNumberElastic() const {
+    return numberElastic;
+}
+

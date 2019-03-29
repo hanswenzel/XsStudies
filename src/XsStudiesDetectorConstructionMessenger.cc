@@ -1,7 +1,7 @@
 
-#include "HadDetectorMessenger.hh"
+#include "XsStudiesDetectorConstructionMessenger.hh"
 
-#include "HadDetectorConstruction.hh"
+#include "XsStudiesDetectorConstruction.hh"
 #include "G4UIdirectory.hh"
 #include "G4UIcmdWithABool.hh"
 #include "G4UIcmdWithAString.hh"
@@ -12,7 +12,7 @@
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-HadDetectorMessenger::HadDetectorMessenger(HadDetectorConstruction * Det)
+XsStudiesDetectorConstructionMessenger::XsStudiesDetectorConstructionMessenger(XsStudiesDetectorConstruction * Det)
 :Detector(Det)
 {
   testDir = new G4UIdirectory("/testhadr/");
@@ -76,7 +76,7 @@ HadDetectorMessenger::HadDetectorMessenger(HadDetectorConstruction * Det)
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-HadDetectorMessenger::~HadDetectorMessenger()
+XsStudiesDetectorConstructionMessenger::~XsStudiesDetectorConstructionMessenger()
 {
   delete matCmd;
   delete mat1Cmd;
@@ -92,7 +92,7 @@ HadDetectorMessenger::~HadDetectorMessenger()
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void HadDetectorMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
+void XsStudiesDetectorConstructionMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
 {
   if( command == matCmd )
    Detector->SetTargetMaterial(newValue);

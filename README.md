@@ -1,5 +1,6 @@
-# G4HadStudies
-Is a stand alone geant4 application to calculate hadronic cross sections. 
+# XsStudies
+multithreaded stand alone geant 4 application to calculate various hadronic cross sections 
+
 
 Prerequisites: Geant4 and ROOT installed and the runtime properly initialized.  
 cmake 
@@ -7,16 +8,16 @@ cmake
 
 
 Checking the code out from github:
-git clone https://hanswenzel@github.com/hanswenzel/G4HadStudies.git
+git clone https://hanswenzel@github.com/hanswenzel/XsStudies.git
 
 Build Instructions:
 For an out of source build do:
 
-mkdir G4HadStudies-build
+mkdir XsStudies-build
 
-cd G4HadStudies-build
+cd XsStudies-build
 
-cmake ../G4HadStudies/ -DCMAKE_INSTALL_PREFIX=../G4HadStudies-install
+cmake ../XsStudies/ -DCMAKE_INSTALL_PREFIX=../XsStudies-install
 
 make install
 
@@ -24,9 +25,9 @@ To run it :
 
 First use the provided python script to generate the geant4 input:
 
-cd ../G4HadStudies-install/bin
+cd ../XsStudies-install/bin
 
-python ../../G4HadStudies/scripts/makePi+Inputs.py
+python ../../XsStudies/scripts/makePi+Inputs.py
 
 chmod +x run.sh
 
@@ -35,11 +36,5 @@ chmod +x run.sh
 if you want to run more eventsfor better statistics  change the line 
 print >> out, "/run/beamOn 100000" 
 in makePi+Inputs.py accordingly.
-
-
-
-
-
-
 
 

@@ -2,7 +2,7 @@
 /run/verbose 1 
 /tracking/verbose 0 
 
-/testhadr/TargetMat G4_Pb
+/testhadr/TargetMat G4_C
 /testhadr/TargetRadius 100 cm 
 /testhadr/TargetLength 1 cm 
 
@@ -12,4 +12,4 @@
 
 /gun/particle proton 
 /gun/energy 1000.0 MeV 
-/run/beamOn 100000000
+/run/beamOn 1000000000

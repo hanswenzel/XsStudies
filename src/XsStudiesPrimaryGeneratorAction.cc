@@ -7,7 +7,7 @@
 XsStudiesPrimaryGeneratorAction::XsStudiesPrimaryGeneratorAction() {
     particleGun = new G4ParticleGun(1);
     particleGun->SetParticleMomentumDirection(G4ThreeVector(0., 0., 1.));
-    particleGun->SetParticlePosition(G4ThreeVector(0., 0., -5. * mm));
+    particleGun->SetParticlePosition(G4ThreeVector(0., 0., -10. * mm));
     G4double ener = particleGun->GetParticleEnergy();
     G4ParticleDefinition* part = particleGun->GetParticleDefinition();
 }

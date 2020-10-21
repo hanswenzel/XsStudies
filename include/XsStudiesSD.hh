@@ -8,9 +8,12 @@ class G4HCofThisEvent;
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-/// B2Tracker sensitive detector class
 
 class XsStudiesSD : public G4VSensitiveDetector {
+private:
+    // we don't create any Hits
+    unsigned int numberElastic;
+    unsigned int numberinElastic;
 public:
     XsStudiesSD(const G4String& name,
             const G4String& hitsCollectionName);
@@ -22,11 +25,6 @@ public:
     virtual void EndOfEvent(G4HCofThisEvent* hitCollection);
     unsigned int GetNumberinElastic() const;
     unsigned int GetNumberElastic() const;
-
-private:
-    // we don't create any Hits
-    unsigned int numberElastic;
-    unsigned int numberinElastic;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

@@ -20,7 +20,7 @@ include(${Geant4_USE_FILE})
 
 find_package(ROOT REQUIRED)
 if(NOT ROOT_FOUND)
-  message(STATUS "g4had: ROOT package not found. --> g4had disabled")
+  message(STATUS "(${name}: ROOT package not found. --> ${name} disabled")
   return()
 endif()
 include(${ROOT_USE_FILE})

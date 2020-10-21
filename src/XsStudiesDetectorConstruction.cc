@@ -35,7 +35,7 @@ XsStudiesDetectorConstruction::XsStudiesDetectorConstruction() {
     radius = 0.3 * cm;
     targetLength = 4.0 * 0.5 * cm;
     targetMaterial = G4NistManager::Instance()->FindOrBuildMaterial("G4_C");
-    worldMaterial = G4NistManager::Instance()->FindOrBuildMaterial("G4_AIR");
+    worldMaterial = G4NistManager::Instance()->FindOrBuildMaterial("G4_Galactic");
 
 }
 
@@ -54,8 +54,8 @@ G4VPhysicalVolume* XsStudiesDetectorConstruction::Construct() {
     G4SolidStore::GetInstance()->Clean();
 
     // Sizes
-    G4double worldR = radius + cm;
-    G4double worldZ = targetLength + cm;
+    G4double worldR = radius + 10*cm;
+    G4double worldZ = targetLength + 10.*cm;
 
     //
     // World
@@ -67,7 +67,7 @@ G4VPhysicalVolume* XsStudiesDetectorConstruction::Construct() {
     //
     // Target volume
     //
-    G4Tubs* solidT = new G4Tubs("Target", 0., radius, targetLength, 0., twopi);
+    G4Tubs* solidT = new G4Tubs("Target", 0., radius, 0.5*targetLength, 0., twopi);
     logicTarget = new G4LogicalVolume(solidT, targetMaterial, "Target");
     new G4PVPlacement(0, G4ThreeVector(), logicTarget, "Target", logicWorld, false, 0);
 

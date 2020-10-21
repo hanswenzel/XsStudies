@@ -1,5 +1,11 @@
-#include "G4RunManager.hh"
+//
+
+#include "G4Types.hh"
+#ifdef G4MULTITHREADED
 #include "G4MTRunManager.hh"
+#else
+#include "G4RunManager.hh"
+#endif
 #include "G4UImanager.hh"
 #include "Randomize.hh"
 #include "G4PhysListFactory.hh"
@@ -11,6 +17,8 @@
 #include "XsStudiesDetectorConstruction.hh"
 #include "XsStudiesPrimaryGeneratorAction.hh"
 #include "ActionInitialization.hh"
+
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 int main(int argc, char** argv) {
@@ -23,9 +31,10 @@ int main(int argc, char** argv) {
     }
     //choose the Random engine
     G4Random::HepRandom::setTheEngine(new CLHEP::RanecuEngine());
+    //
     // Construct the default run manager
     //
-#ifdef G4MULTITHREADED
+#ifdef G4MULTITHREADED   
     //the default number of threads
     G4int nThreads = 1;
     //set it from the -t option is provided
@@ -34,11 +43,12 @@ int main(int argc, char** argv) {
             nThreads = G4UIcommand::ConvertToInt(argv[i + 1]);
         }
     }
-    G4MTRunManager* runManager = new G4MTRunManager;
+    auto runManager = new G4MTRunManager;
     runManager->SetNumberOfThreads(nThreads);
 #else
-    G4RunManager* runManager = new G4RunManager;
+    auto runManager = new G4RunManager;
 #endif
+
     G4PhysListFactory factory;
     G4VModularPhysicsList* phys = NULL;
     G4String physName = "";
@@ -85,10 +95,10 @@ int main(int argc, char** argv) {
     runManager->SetUserInitialization(actionInitialization);
     // Initialize visualization
     //
-    G4VisManager* visManager = new G4VisExecutive;
+    //G4VisManager* visManager = new G4VisExecutive;
     // G4VisExecutive can take a verbosity argument - see /vis/verbose guidance.
     // G4VisManager* visManager = new G4VisExecutive("Quiet");
-    visManager->Initialize();
+    //visManager->Initialize();
 
 
     //get the pointer to the User Interface manager
@@ -111,7 +121,7 @@ int main(int argc, char** argv) {
     // Free the store: user actions, physics_list and detector_description are
     // owned and deleted by the run manager, so they should not be deleted 
     // in the main() program !
-    delete visManager;
+    //delete visManager;
     delete runManager;
     return 0;
 }

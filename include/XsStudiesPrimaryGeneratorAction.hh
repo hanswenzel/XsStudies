@@ -1,7 +1,4 @@
-
-#ifndef XsStudiesPrimaryGeneratorAction_h
-#define XsStudiesPrimaryGeneratorAction_h 1
-
+#pragma once
 #include "G4VUserPrimaryGeneratorAction.hh"
 #include "globals.hh"
 
@@ -10,22 +7,15 @@ class G4ParticleGun;
 
 class XsStudiesPrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction {
 private:
+  XsStudiesPrimaryGeneratorAction &
+  operator=(const XsStudiesPrimaryGeneratorAction &right);
+  XsStudiesPrimaryGeneratorAction(const XsStudiesPrimaryGeneratorAction &);
+  G4ParticleGun *particleGun;
 
-    XsStudiesPrimaryGeneratorAction & operator=(const XsStudiesPrimaryGeneratorAction &right);
-    XsStudiesPrimaryGeneratorAction(const XsStudiesPrimaryGeneratorAction&);
-    G4ParticleGun* particleGun;
 public:
-    XsStudiesPrimaryGeneratorAction();
-    virtual ~XsStudiesPrimaryGeneratorAction();
-    void GeneratePrimaries(G4Event*);
+  XsStudiesPrimaryGeneratorAction();
+  virtual ~XsStudiesPrimaryGeneratorAction();
+  void GeneratePrimaries(G4Event *);
 
-    G4ParticleGun* GetParticleGun() const {
-        return particleGun;
-    }
+  G4ParticleGun *GetParticleGun() const { return particleGun; }
 };
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-#endif
-
-

@@ -1,0 +1,11 @@
+{
+    "name": "x86-Debug",
+    "generator": "Ninja",
+    "configurationType": "Debug",
+    "cmakeCommandArgs": "",
+    "buildRoot": "../XsStudies-build",
+    "installRoot": "../XsStudies-install",
+    "cmakeCommandArgs": "",
+    "buildCommandArgs": "-v",
+    "ctestCommandArgs": ""
+}

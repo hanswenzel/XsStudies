@@ -2,7 +2,7 @@
 #include "G4HCofThisEvent.hh"
 #include "G4Step.hh"
 #include "G4VProcess.hh"
-#include "g4analysis.hh"
+#include "G4AnalysisManager.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4SteppingManager.hh"
 #include "G4EventManager.hh"

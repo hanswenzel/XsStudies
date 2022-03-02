@@ -1,9 +1,6 @@
-
-#ifndef XsStudiesDetectorConstructionMessenger_h
-#define XsStudiesDetectorConstructionMessenger_h 1
-
-#include "globals.hh"
+#pragma once
 #include "G4UImessenger.hh"
+#include "globals.hh"
 
 class XsStudiesDetectorConstruction;
 class G4UIdirectory;
@@ -15,34 +12,25 @@ class G4UIcmdWithoutParameter;
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-class XsStudiesDetectorConstructionMessenger: public G4UImessenger
-{
+class XsStudiesDetectorConstructionMessenger : public G4UImessenger {
 public:
-
-  XsStudiesDetectorConstructionMessenger(XsStudiesDetectorConstruction* );
+  XsStudiesDetectorConstructionMessenger(XsStudiesDetectorConstruction *);
   virtual ~XsStudiesDetectorConstructionMessenger();
 
-  void SetNewValue(G4UIcommand*, G4String);
+  void SetNewValue(G4UIcommand *, G4String);
 
 private:
+  XsStudiesDetectorConstruction *Detector;
 
-  XsStudiesDetectorConstruction* Detector;
-
-  G4UIdirectory*             testDir;
-  G4UIcmdWithAString*        matCmd;
-  G4UIcmdWithAString*        mat1Cmd;
-  G4UIcmdWithADoubleAndUnit* rCmd;
-  G4UIcmdWithADoubleAndUnit* lCmd;
-  G4UIcmdWithADoubleAndUnit* edepCmd;
-  G4UIcmdWithAnInteger*      binCmd;
-  G4UIcmdWithAnInteger*      nOfAbsCmd;
-  G4UIcmdWithAnInteger*      verbCmd;
-  G4UIcmdWithABool*          beamCmd;
-  G4UIcmdWithoutParameter*   updateCmd;
-
+  G4UIdirectory *testDir;
+  G4UIcmdWithAString *matCmd;
+  G4UIcmdWithAString *mat1Cmd;
+  G4UIcmdWithADoubleAndUnit *rCmd;
+  G4UIcmdWithADoubleAndUnit *lCmd;
+  G4UIcmdWithADoubleAndUnit *edepCmd;
+  G4UIcmdWithAnInteger *binCmd;
+  G4UIcmdWithAnInteger *nOfAbsCmd;
+  G4UIcmdWithAnInteger *verbCmd;
+  G4UIcmdWithABool *beamCmd;
+  G4UIcmdWithoutParameter *updateCmd;
 };
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-#endif
-

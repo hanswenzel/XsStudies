@@ -72,8 +72,8 @@ G4VPhysicalVolume* XsStudiesDetectorConstruction::Construct() {
     new G4PVPlacement(0, G4ThreeVector(), logicTarget, "Target", logicWorld, false, 0);
 
     // colors
-    G4VisAttributes zero = G4VisAttributes::Invisible;
-    logicWorld->SetVisAttributes(&zero);
+    //    G4VisAttributes zero = G4VisAttributes::Invisible;
+    //logicWorld->SetVisAttributes(&zero);
 
     G4VisAttributes regCcolor(G4Colour(0., 0.3, 0.7));
     logicTarget->SetVisAttributes(&regCcolor);

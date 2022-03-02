@@ -1,22 +1,17 @@
-#ifndef ActionInitialization_h
-#define ActionInitialization_h 1
-
+#pragma once
 #include "G4VUserActionInitialization.hh"
 
 class XsStudiesDetectorConstruction;
 
-class ActionInitialization : public G4VUserActionInitialization
-{
-  public:
-//    ActionInitialization(DetectorConstruction*);
-      ActionInitialization();
-    virtual ~ActionInitialization();
+class ActionInitialization : public G4VUserActionInitialization {
+public:
+  //    ActionInitialization(DetectorConstruction*);
+  ActionInitialization();
+  virtual ~ActionInitialization();
 
-    virtual void BuildForMaster() const;
-    virtual void Build() const;
+  virtual void BuildForMaster() const;
+  virtual void Build() const;
 
-  private:
-    XsStudiesDetectorConstruction* fDetConstruction;
+private:
+  XsStudiesDetectorConstruction *fDetConstruction;
 };
-
-#endif

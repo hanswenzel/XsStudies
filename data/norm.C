@@ -15,7 +15,7 @@ const double avogadro=6.02214e23;
 // C
 const double rho=2.;
 const double A = 12.011;
-const double nevts = 1000000000;
+const double nevts = 100000000;
 const double thickness=1;
 const double convert=A/(avogadro*rho*thickness);
 double sterad(double tmin,double tmax)
@@ -44,4 +44,3 @@ void norm()
   hist1->GetXaxis()->SetTitle("#theta");
   hist1->Draw();
 }
-

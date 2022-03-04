@@ -8,5 +8,16 @@
         "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
         "-DCMAKE_INSTALL_PREFIX=../XsStudies-install"
     ],
-    "cmake.buildDirectory": "../XsStudies-build"
+    "cmake.buildDirectory": "../XsStudies-build",
+    "editor.formatOnSave": true,
+    "files.associations": {
+        "*.icc": "cpp",
+        "hplot": "cpp",
+        "atomic": "cpp",
+        "complex": "cpp",
+        "optional": "cpp",
+        "type_traits": "cpp",
+        "functional": "cpp",
+        "regex": "cpp"
+    }
 }

@@ -10,23 +10,21 @@
 // G4double glob_energy;
 class G4ParticleDefinition;
 class XsStudiesPrimaryGeneratorAction;
-class XsStudiesRunAction : public G4UserRunAction {
-public: // Without description
+class XsStudiesRunAction : public G4UserRunAction
+{
+ public:
   XsStudiesRunAction();
-  virtual ~XsStudiesRunAction();
-  //    virtual G4Run* GenerateRun();
-  void BeginOfRunAction(const G4Run *);
-  void EndOfRunAction(const G4Run *);
-
+  virtual ~XsStudiesRunAction() override;
+  void BeginOfRunAction(const G4Run*) override;
+  void EndOfRunAction(const G4Run*) override;
   void CountElastic() { numberElastic += 1; };
-
   void CountInElastic() { numberinElastic += 1; };
 
-private:
-  G4double energy;
-  G4ParticleDefinition *particle;
-  const XsStudiesPrimaryGeneratorAction *primary;
-  G4Accumulable<G4int> numberElastic;
-  G4Accumulable<G4int> numberinElastic;
+ private:
+  //  G4double energy;
+  //  G4ParticleDefinition* particle;
+  const XsStudiesPrimaryGeneratorAction* primary;
+  G4Accumulable<G4int> numberElastic{ 0 };
+  G4Accumulable<G4int> numberinElastic{ 0 };
   //      XsStudiesRun*          fRun;
 };

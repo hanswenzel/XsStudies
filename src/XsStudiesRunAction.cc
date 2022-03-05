@@ -56,6 +56,8 @@ XsStudiesRunAction::XsStudiesRunAction()
   // Creating 1D histograms
   analysisManager->CreateH1("diff", "differental cross section scattering angle ", 100, 0.,
                             25);  // h1 Id = 0
+  analysisManager->CreateH1("diff2", "differental cross section scattering angle ", 150, 0.,
+                            40);  // h1 Id = 1
 }
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....
 
@@ -113,6 +115,8 @@ void XsStudiesRunAction::EndOfRunAction(const G4Run* aRun)
     const G4Element* element = G4NistManager::Instance()->FindOrBuildElement(elemName);
     const double thickness   = DetConst->GetTargetLength();
     std::cout << element << std::endl;
+    std::cout << "Avogadro * rho * thickness:  " << Avogadro << "  "
+              << "  " << rho << "  " << thickness * mm << std::endl;
     std::cout << "Avogadro * rho * thickness:  " << Avogadro << "  "
               << "  " << rho << "  " << thickness * mm << std::endl;
     const double aweight    = element->GetAtomicMassAmu();

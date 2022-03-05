@@ -9,9 +9,7 @@
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 XsStudiesSD::XsStudiesSD(const G4String& name, const G4String&)
-  : numberElastic(0)
-  , numberinElastic(0)
-  , G4VSensitiveDetector(name)
+  : G4VSensitiveDetector(name)
 {}
 
 XsStudiesSD::~XsStudiesSD() {}
@@ -38,6 +36,7 @@ G4bool XsStudiesSD::ProcessHits(G4Step* aStep, G4TouchableHistory*)
       auto analysisManager = G4AnalysisManager::Instance();
       double angle         = pa.angle(pb) / degree;
       analysisManager->FillH1(0, angle);
+      analysisManager->FillH1(1, angle);
       numberElastic++;
       aStep->GetTrack()->SetTrackStatus(fStopAndKill);
       return true;

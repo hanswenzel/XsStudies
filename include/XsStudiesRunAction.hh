@@ -2,13 +2,8 @@
 #include "G4Accumulable.hh"
 #include "G4UserRunAction.hh"
 #include "globals.hh"
-// include "G4Run.hh"
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....
-// class XsStudiesRun;
-// G4String glob_partName;
-// G4double glob_energy;
-class G4ParticleDefinition;
+// class G4ParticleDefinition;
 class XsStudiesPrimaryGeneratorAction;
 class XsStudiesRunAction : public G4UserRunAction
 {
@@ -21,10 +16,7 @@ class XsStudiesRunAction : public G4UserRunAction
   void CountInElastic() { numberinElastic += 1; };
 
  private:
-  //  G4double energy;
-  //  G4ParticleDefinition* particle;
   const XsStudiesPrimaryGeneratorAction* primary;
   G4Accumulable<G4int> numberElastic{ 0 };
   G4Accumulable<G4int> numberinElastic{ 0 };
-  //      XsStudiesRun*          fRun;
 };

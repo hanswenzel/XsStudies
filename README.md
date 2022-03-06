@@ -4,7 +4,7 @@ multithreaded stand alone geant 4 application to calculate various hadronic cros
 
 Prerequisites: Geant4 and ROOT installed and the runtime properly initialized.  
 cmake 
-# differential cross section pi- on Ar 
+# example: differential cross section pi- on Ar 
 ![differential cross section](https://github.com/hanswenzel/XsStudies/blob/master/data/G4Elasticpi-onAr3D.png)
 
 

@@ -7,6 +7,8 @@
 #include <TLegend.h>
 #include <TLegendEntry.h>
 #include <TFrame.h>
+#include <TH1D.h>
+#include <TH2D.h>
 using namespace std;
 // convert into steradians 
 const double avogadro=6.02214e23;
@@ -31,10 +33,19 @@ double sterad(double tmin,double tmax)
 
 void plotpi()
 {
+  TH2D  *hist2D = new  TH2D("hist2d", "differential cross section pi- on Argon",150, 0.,40., 13, 75., 725.);
+  hist2D->GetZaxis()->SetTitle("#frac{d#sigma}{d#Omega} (#frac{mb}{ster})");
+  hist2D->GetXaxis()->SetTitle("#theta");
+  hist2D->GetYaxis()->SetTitle(" kinetic Energy [MeV]");
+  hist2D->SetMinimum(0.01);
+  hist2D->SetMaximum(1000000);
+  hist2D->SetStats(0);
+  
   const int points=13;
   TFile *_file[points];
   TH1D* hist[points];
-  int j=0;  TCanvas *c1 = new TCanvas("c1","elastic scattering",1000,800);
+  int j=0;
+  TCanvas *c1 = new TCanvas("c1","elastic scattering",1000,800);
   c1->cd();
   c1->SetGrid();
   c1->SetLogy();
@@ -48,6 +59,7 @@ void plotpi()
       for (int ii=1;ii<hist[j]->GetNbinsX()+1;ii++)
 	{
 	  hist[j]->SetBinContent(ii, ((1e27*convert)/nevts)*(hist[j]->GetBinContent(ii)/sterad(hist[j]->GetXaxis()->GetBinLowEdge(ii),hist[j]->GetXaxis()->GetBinUpEdge(ii))));
+	  hist2D->SetBinContent(ii,13-j, ((1e27*convert)/nevts)*(hist[j]->GetBinContent(ii)/sterad(hist[j]->GetXaxis()->GetBinLowEdge(ii),hist[j]->GetXaxis()->GetBinUpEdge(ii))));
 	}
       string str2="G4Elastic pi- on Ar "+std::to_string(i)+"MeV";
       hist[j]->SetTitle(str2.c_str() ); 
@@ -71,4 +83,9 @@ void plotpi()
 	}
     }
    legend->Draw();
+   TCanvas *c2 = new TCanvas("c2","elastic scattering",1000,800);
+   c2->cd();
+   //  c2->SetGrid();
+   c2->SetLogz();
+   hist2D->Draw("surf1");
 }

@@ -18,7 +18,7 @@ mkdir XsStudies-build
 
 cd XsStudies-build
 
-cmake ../XsStudies/ -DCMAKE_INSTALL_PREFIX=../XsStudies-install
+cmake ../XsStudies/ -GNinja -DCMAKE_INSTALL_PREFIX=../XsStudies-install
 
 make install
 

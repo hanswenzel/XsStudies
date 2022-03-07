@@ -19,7 +19,8 @@ const double avogadro=6.02214e23;
 //const double rho=2.;
 //const double A = 12.011;
 // G4_Ar
-const double rho=0.00166201;
+//const double rho=0.00166201; // gas
+const double rho= 1.396;     // liquid
 const double A=39.948;
 const double nevts = 1000000000;
 const double thickness=1;

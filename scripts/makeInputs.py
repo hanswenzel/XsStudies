@@ -48,10 +48,10 @@ def main(argv):
     print >> out, "/control/verbose 1 "
     print >> out, "/run/verbose 1 "
     print >> out, "/tracking/verbose 0 "
-    print >> out, "/testhadr/TargetMat %s" % material
-    print >> out, "/testhadr/TargetRadius 100 cm "
-    print >> out, "/testhadr/TargetLength 1 cm "
-    print >> out, "/testhadr/Update "
+    print >> out, "/XsStudies/TargetMat %s" % material
+    print >> out, "/XsStudies/TargetRadius 100 cm "
+    print >> out, "/XsStudies/TargetLength 1 cm "
+    print >> out, "/XsStudies/Update "
     print >> out, "/testana/FileName %s" % filename
     print >> out, "/run/initialize "
     print >> out, "/random/setSeeds %d %d " % (n, 31+n)

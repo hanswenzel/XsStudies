@@ -27,10 +27,9 @@ private:
   G4UIcmdWithAString *mat1Cmd;
   G4UIcmdWithADoubleAndUnit *rCmd;
   G4UIcmdWithADoubleAndUnit *lCmd;
-  G4UIcmdWithADoubleAndUnit *edepCmd;
-  G4UIcmdWithAnInteger *binCmd;
-  G4UIcmdWithAnInteger *nOfAbsCmd;
-  G4UIcmdWithAnInteger *verbCmd;
-  G4UIcmdWithABool *beamCmd;
+  G4UIcmdWithADoubleAndUnit *dCmd;
+  //G4UIcmdWithAnInteger *nOfAbsCmd;
+  //  G4UIcmdWithAnInteger *verbCmd;
+  //G4UIcmdWithABool *beamCmd;
   G4UIcmdWithoutParameter *updateCmd;
 };

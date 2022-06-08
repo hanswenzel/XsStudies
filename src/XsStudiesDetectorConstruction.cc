@@ -166,7 +166,14 @@ void XsStudiesDetectorConstruction::SetLogicTarget(G4LogicalVolume* lT) { this->
 
 G4LogicalVolume* XsStudiesDetectorConstruction::GetLogicTarget() const { return logicTarget; }
 
-void XsStudiesDetectorConstruction::SetDensity(G4double den) { this->density = den; }
+void XsStudiesDetectorConstruction::SetDensity(G4double den)
+{
+  if(den > 0.0)
+    {
+      this->density = den;
+      G4RunManager::GetRunManager()->GeometryHasBeenModified();
+    }
+}
 
 G4double XsStudiesDetectorConstruction::GetDensity() const { return density; }
 
@@ -187,7 +194,6 @@ void XsStudiesDetectorConstruction::SetTargetLength(G4double val)
 {
   if(val > 0.0)
   {
-    //        targetLength = val * 0.5;
     targetLength = val;
     G4RunManager::GetRunManager()->GeometryHasBeenModified();
   }

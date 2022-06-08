@@ -7,11 +7,11 @@ do
 /run/verbose 1 
 /tracking/verbose 0 
 
-/testhadr/TargetMat G4_Ar
-/testhadr/TargetRadius 100 cm 
-/testhadr/TargetLength 1 cm 
+/XsStudies/TargetMat G4_Ar
+/XsStudies/TargetRadius 100 cm 
+/XsStudies/TargetLength 1 cm 
 
-/testhadr/Update 
+/XsStudies/Update 
 /run/initialize 
 /random/setSeeds 0 31 
 
@@ -31,11 +31,11 @@ do
 /run/verbose 1 
 /tracking/verbose 0 
 
-/testhadr/TargetMat G4_Ar
-/testhadr/TargetRadius 100 cm 
-/testhadr/TargetLength 1 cm 
+/XsStudies/TargetMat G4_Ar
+/XsStudies/TargetRadius 100 cm 
+/XsStudies/TargetLength 1 cm 
 
-/testhadr/Update 
+/XsStudies/Update 
 /run/initialize 
 /random/setSeeds 0 31 
 

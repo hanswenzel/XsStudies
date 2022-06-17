@@ -23,7 +23,7 @@ cd XsStudies-build
 
 cmake ../XsStudies/ -GNinja -DCMAKE_INSTALL_PREFIX=../XsStudies-install
 
-make install
+ninja install
 
 To run it :
 
